@@ -1,4 +1,4 @@
-﻿#NoEnv
+#NoEnv
 #SingleInstance Force
 SendMode Input
 SetWorkingDir %A_ScriptDir%
@@ -30,7 +30,7 @@ return
 
 ShowLockScreen() {
     global
-    ; 1. Create a pitch-black fullscreen background overlay (No AlwaysOnTop so clicking outside cannot hide it)
+    ; 1. Create a pitch-black fullscreen background overlay (Reverted to original: No AlwaysOnTop so clicking outside cannot hide the dialog)
     Gui, LockBG:New, -Caption +ToolWindow
     Gui, LockBG:Color, 000000
     Gui, LockBG:Show, x0 y0 w%A_ScreenWidth% h%A_ScreenHeight%
@@ -72,10 +72,15 @@ ShowLockScreen() {
 
     Gui, Win2k:Show, x%PosX% y%PosY% w%BoxWidth% h%BoxHeight%, Logon to Windows
 
-    ; Intercept break-out keystrokes
+    ; Intercept break-out keystrokes (Includes Win keys, Task Manager, and Alt+Tab)
     Hotkey, *Tab, BlockKey, On
     Hotkey, *Escape, BlockKey, On
     Hotkey, !F4, BlockKey, On
+    Hotkey, LWin, BlockKey, On
+    Hotkey, RWin, BlockKey, On
+    Hotkey, ^+Esc, BlockKey, On
+    Hotkey, !Tab, BlockKey, On
+    Hotkey, ^!Tab, BlockKey, On
     
     ; Focus automatically on the password box
     ControlFocus, Edit2, Logon to Windows
@@ -126,4 +131,9 @@ HotkeysOff() {
     Hotkey, *Tab, Off
     Hotkey, *Escape, Off
     Hotkey, !F4, Off
+    Hotkey, LWin, Off
+    Hotkey, RWin, Off
+    Hotkey, ^+Esc, Off
+    Hotkey, !Tab, Off
+    Hotkey, ^!Tab, Off
 }
