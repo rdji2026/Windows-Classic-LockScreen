@@ -9,6 +9,8 @@ This code intercepts Win+L to lock the screen, yet you need to disable Win+L fro
 If a key named System does not exist under Policies, right-click Policies -> New -> Key and name it System.
 3/ Inside the System key, right-click the empty space on the right -> New -> DWORD (32-bit) Value and name it DisableLockWorkstation.   
 4/ Double-click DisableLockWorkstation and set its value data to 1. Click OK.
-In addition, it has a timer for user inactivity to launch lock screen; you can tune it as you see fit.
-NB: Ctl+Alt+Sup will trigger official/native lock screen; your choice if you want to work around it.
+
+In addition, code has built-in timer for user inactivity for triggering lock screen; you can tune it as you see fit.
+NB: Ctl+Alt+Sup will trigger official/native lock screen and with task manager you can workaround the lock screen; your choice if you want to disable Ctl+Alt+Sup.
+
 DISCLAIMER: Use at your own risk.
